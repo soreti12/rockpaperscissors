@@ -1,1 +1,51 @@
-# odin-project
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600&display=swap" rel="stylesheet">
+    <title>Rock, Paper, Scissors</title>
+</head>
+<body>
+    <h1>Rock, Paper, Scissors</h1>
+    <button id='btn'>Play!</button>
+<main></main>
+
+
+    <script>
+        let computerRound;
+        function computerPlay(RPC) {
+            RPC = ['Rock', 'Paper', 'Scissors'];
+            computerRound = RPC[Math.floor(Math.random()*RPC.length)]
+            console.log(computerRound);
+        }
+        computerPlay()
+
+        function playRound(userPlay) {
+            userPlay = 'Rock';
+            if (userPlay === computerRound) {
+                console.log('You') 
+            } else {
+                console.log('Me')
+            }
+        }
+        const content = document.querySelector('main');
+
+        const title = document.querySelector('h1');
+        title.setAttribute('style',':')
+
+        const main = document.createElement('div');
+        content.appendChild(main);
+
+        const btn = document.querySelector('#btn');
+        btn.addEventListener('click', () => {
+            playRound()
+        })
+
+        // const btn = document.querySelector('#btn');
+        // btn.addEventListener('click',playRound);
+
+
+    </script>
+</body>
+</html>
