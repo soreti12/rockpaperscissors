@@ -3,49 +3,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/css2?family=Lora:wght@600&display=swap" rel="stylesheet">
-    <title>Rock, Paper, Scissors</title>
+    <title>Document</title>
 </head>
 <body>
-    <h1>Rock, Paper, Scissors</h1>
-    <button id='btn'>Play!</button>
-<main></main>
-
+    <h1>Rock Paper Scissors</h1>
+    <div id="container">
+        <button id='Rock'>Rock</button>
+        <button id='Paper'>Paper</button>
+        <button id='Scissors'>Scissors</button>
+    </div>
 
     <script>
-        let computerRound;
-        function computerPlay(RPC) {
-            RPC = ['Rock', 'Paper', 'Scissors'];
-            computerRound = RPC[Math.floor(Math.random()*RPC.length)]
-            console.log(computerRound);
+        const buttons = document.querySelectorAll('button');
+
+        let compArr = ['Rock', 'Paper', 'Scissors']
+        function computerPlay() {
+            let round = compArr[Math.floor(Math.random()*compArr.length)];
+            console.log(round)
         }
-        computerPlay()
 
-        function playRound(userPlay) {
-            userPlay = 'Rock';
-            if (userPlay === computerRound) {
-                console.log('You') 
-            } else {
-                console.log('Me')
-            }
-        }
-        const content = document.querySelector('main');
+        function playRound(input, computerSelection) {
+            if (input === 'Rock' && computerSelection === 'Paper'){
+                console.log('k')
+        } else if (input === 'Rock' && computerSelection === 'Scissors') {
+               console.log('d')
+        } else if (input === 'Rock' && computerSelection === 'Paper') {
+               console.log('f')
+        } else if (input === 'Paper' && computerSelection === 'Rock') {
+                console.log('s')
+        } else if (input === 'Paper' && computerSelection === 'Scissors') {
+                console.log('v')
+        } else if (input === 'Scissors' && computerSelection === 'Paper') {
+                 console.log('n')
+        } else if (input === 'Scissors' && computerSelection === 'Rock') {
+        console.log('ff')
+        }else {
+        console.log(`It's a Tie!`)
+     }}
+     
+     const computerSelection = computerPlay()
 
-        const title = document.querySelector('h1');
-        title.setAttribute('style',':')
-
-        const main = document.createElement('div');
-        content.appendChild(main);
-
-        const btn = document.querySelector('#btn');
-        btn.addEventListener('click', () => {
-            playRound()
-        })
-
-        // const btn = document.querySelector('#btn');
-        // btn.addEventListener('click',playRound);
-
-
+        buttons.forEach((button => {
+            button.addEventListener('click', () => {
+                let input = button.id;
+                playRound()
+            })
+        }))
     </script>
 </body>
 </html>
