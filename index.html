@@ -3,7 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet">
+
     <title>Document</title>
+    <style>
+        html, body {
+            margin: 0;
+            height: 100%;
+        }
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Nunito Sans', sans-serif;
+        }
+        h1 {
+            padding-top: 5px;
+        }
+        #container {
+            margin-top: 10%;
+            padding: 20px 50px;
+        }
+        button {
+            border: none;
+            outline: none;
+            background-color: #FB978E;
+            padding: 14px 40px;
+            font-size: 16px;
+        }
+        button:hover {
+            background-color: #FB867C;
+        }
+        button:active {
+            transform: scale(.9);
+        }
+        p {
+            font-size: 30px;
+            color: black;
+        }
+        #newParagraph {
+            margin: auto;
+            margin-top: 35px;
+            height: 30%;
+            width: 75%;
+            background-color: #F1F1F1;
+        }
+    </style>
 </head>
 <body>
     <h1>Rock Paper Scissors</h1>
@@ -12,10 +58,17 @@
         <button id='Paper'>Paper</button>
         <button id='Scissors'>Scissors</button>
     </div>
-    <div id='newParagraph'></div>
+    <div id='newParagraph'>
+        <p id='par'></p>
+    </div>
 
     <script>
         const buttons = document.querySelectorAll('button');
+
+        const div = document.getElementById('newParagraph');
+
+        const para = document.getElementById('par');
+        
 
         let compArr = ['Rock', 'Paper', 'Scissors']
         function computerPlay() {
@@ -27,30 +80,34 @@
             console.log(input)
             console.log(computerSelection)
             if (input === 'Rock' && computerSelection === 'Paper') {
-                console.log(`${computerSelection} beats ${input}`)
+                 output = `${computerSelection} beats ${input}!`
+                 return output
             } else if (input === 'Rock' && computerSelection === 'Scissors') {
-                console.log(`${input} beats ${computerSelection}`)
+                 output = `${input} beats ${computerSelection}!`
+                 return output
             } else if (input === 'Paper' && computerSelection === 'Scissors') {
-                console.log(`${computerSelection} beats ${input}`)
+                 output = `${computerSelection} beats ${input}!`
+                 return output
             } else if (input === 'Paper' && computerSelection === 'Rock') {
-                console.log(`${input} beats ${computerSelection}`)
+                 output = `${input} beats ${computerSelection}!`
+                 return output
             } else if (input === 'Scissors' && computerSelection === 'Rock') {
-                console.log(`${computerSelection} beats ${input}`)
+                  output =`${computerSelection} beats ${input}!`
+                  return output
             } else if (input === 'Scissors' && computerSelection === 'Paper') {
-                console.log(`${input} beats ${computerSelection}`)
+                  output =`${input} beats ${computerSelection}!`
+                  return output
             } else {
-                console.log('It\'s a tie!')
+                 output = 'It\'s a tie!'
+                 return output
             }
         }
-
-
         buttons.forEach((button => {
             button.addEventListener('click', () => {
-                const computerSelection = computerPlay()
+                const computerSelection = computerPlay();
                 const input = button.id;
-                playRound(input, computerSelection)
-
-                // playRound()
+                para.textContent = playRound(input, computerSelection)
+                div.appendChild(para);
             })
         }))
     </script>
