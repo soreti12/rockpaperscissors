@@ -12,6 +12,7 @@
         <button id='Paper'>Paper</button>
         <button id='Scissors'>Scissors</button>
     </div>
+    <div id='newParagraph'></div>
 
     <script>
         const buttons = document.querySelectorAll('button');
@@ -19,34 +20,37 @@
         let compArr = ['Rock', 'Paper', 'Scissors']
         function computerPlay() {
             let round = compArr[Math.floor(Math.random()*compArr.length)];
-            console.log(round)
+            return round;
         }
 
         function playRound(input, computerSelection) {
-            if (input === 'Rock' && computerSelection === 'Paper'){
-                console.log('k')
-        } else if (input === 'Rock' && computerSelection === 'Scissors') {
-               console.log('d')
-        } else if (input === 'Rock' && computerSelection === 'Paper') {
-               console.log('f')
-        } else if (input === 'Paper' && computerSelection === 'Rock') {
-                console.log('s')
-        } else if (input === 'Paper' && computerSelection === 'Scissors') {
-                console.log('v')
-        } else if (input === 'Scissors' && computerSelection === 'Paper') {
-                 console.log('n')
-        } else if (input === 'Scissors' && computerSelection === 'Rock') {
-        console.log('ff')
-        }else {
-        console.log(`It's a Tie!`)
-     }}
-     
-     const computerSelection = computerPlay()
+            console.log(input)
+            console.log(computerSelection)
+            if (input === 'Rock' && computerSelection === 'Paper') {
+                console.log(`${computerSelection} beats ${input}`)
+            } else if (input === 'Rock' && computerSelection === 'Scissors') {
+                console.log(`${input} beats ${computerSelection}`)
+            } else if (input === 'Paper' && computerSelection === 'Scissors') {
+                console.log(`${computerSelection} beats ${input}`)
+            } else if (input === 'Paper' && computerSelection === 'Rock') {
+                console.log(`${input} beats ${computerSelection}`)
+            } else if (input === 'Scissors' && computerSelection === 'Rock') {
+                console.log(`${computerSelection} beats ${input}`)
+            } else if (input === 'Scissors' && computerSelection === 'Paper') {
+                console.log(`${input} beats ${computerSelection}`)
+            } else {
+                console.log('It\'s a tie!')
+            }
+        }
+
 
         buttons.forEach((button => {
             button.addEventListener('click', () => {
-                let input = button.id;
-                playRound()
+                const computerSelection = computerPlay()
+                const input = button.id;
+                playRound(input, computerSelection)
+
+                // playRound()
             })
         }))
     </script>
