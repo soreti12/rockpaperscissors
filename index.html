@@ -69,13 +69,14 @@
 
         const para = document.getElementById('par');
         
-
+        //randomly selects element form compArr for computer will play
         let compArr = ['Rock', 'Paper', 'Scissors']
         function computerPlay() {
             let round = compArr[Math.floor(Math.random()*compArr.length)];
             return round;
         }
 
+        //plays one round of game
         function playRound(input, computerSelection) {
             console.log(input)
             console.log(computerSelection)
