@@ -3,114 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 
-    <title>Document</title>
-    <style>
-        html, body {
-            margin: 0;
-            height: 100%;
-        }
-        body {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            font-family: 'Nunito Sans', sans-serif;
-        }
-        h1 {
-            padding-top: 5px;
-        }
-        #container {
-            margin-top: 10%;
-            padding: 20px 50px;
-        }
-        button {
-            border: none;
-            outline: none;
-            background-color: #FB978E;
-            padding: 14px 40px;
-            font-size: 16px;
-        }
-        button:hover {
-            background-color: #FB867C;
-        }
-        button:active {
-            transform: scale(.9);
-        }
-        p {
-            font-size: 30px;
-            color: black;
-        }
-        #newParagraph {
-            margin: auto;
-            margin-top: 35px;
-            height: 30%;
-            width: 75%;
-            background-color: #F1F1F1;
-        }
-    </style>
+
+    <title>Rock Paper Scissors</title>
+
 </head>
 <body>
-    <h1>Rock Paper Scissors</h1>
+    <div id='computerCount' class='count'> <h2>Computer Score</h2> 
+    </div>
+    <div id='centerGrid'>
+    <div id='heading'>
+        <h1>Rock Paper Scissors</h1>
+    </div>
+    <div id='roundCount' ></div>
     <div id="container">
         <button id='Rock'>Rock</button>
         <button id='Paper'>Paper</button>
         <button id='Scissors'>Scissors</button>
     </div>
     <div id='newParagraph'>
-        <p id='par'></p>
+        <p id='par'> dd</p>
     </div>
-
-    <script>
-        const buttons = document.querySelectorAll('button');
-
-        const div = document.getElementById('newParagraph');
-
-        const para = document.getElementById('par');
-        
-        //randomly selects element form compArr for computer will play
-        let compArr = ['Rock', 'Paper', 'Scissors']
-        function computerPlay() {
-            let round = compArr[Math.floor(Math.random()*compArr.length)];
-            return round;
-        }
-
-        //plays one round of game
-        function playRound(input, computerSelection) {
-            console.log(input)
-            console.log(computerSelection)
-            if (input === 'Rock' && computerSelection === 'Paper') {
-                 output = `${computerSelection} beats ${input}!`
-                 return output
-            } else if (input === 'Rock' && computerSelection === 'Scissors') {
-                 output = `${input} beats ${computerSelection}!`
-                 return output
-            } else if (input === 'Paper' && computerSelection === 'Scissors') {
-                 output = `${computerSelection} beats ${input}!`
-                 return output
-            } else if (input === 'Paper' && computerSelection === 'Rock') {
-                 output = `${input} beats ${computerSelection}!`
-                 return output
-            } else if (input === 'Scissors' && computerSelection === 'Rock') {
-                  output =`${computerSelection} beats ${input}!`
-                  return output
-            } else if (input === 'Scissors' && computerSelection === 'Paper') {
-                  output =`${input} beats ${computerSelection}!`
-                  return output
-            } else {
-                 output = 'It\'s a tie!'
-                 return output
-            }
-        }
-        buttons.forEach((button => {
-            button.addEventListener('click', () => {
-                const computerSelection = computerPlay();
-                const input = button.id;
-                para.textContent = playRound(input, computerSelection)
-                div.appendChild(para);
-            })
-        }))
-    </script>
+    </div>
+    <div id='userCount' class="count"> <h2>User <br> Score</h2> </div>
+    <script src="script.js"></script>
 </body>
 </html>
