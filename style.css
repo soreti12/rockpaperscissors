@@ -26,6 +26,19 @@ body > div:nth-child(odd) {
     font-size: 3em;
 }
 
+.count {
+    border: 1px solid none;
+    padding: 0;
+    margin: 0;
+    background: salmon;
+}
+
+.outcome {
+    border: 1px solid black;
+    /* remove height after styling is completed */
+    height: 10%;
+    position: relative;
+}
 
 button {
     border: .1em solid white;

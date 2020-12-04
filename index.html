@@ -8,27 +8,34 @@
     <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;800&display=swap" rel="stylesheet">
 
 
+
     <title>Rock Paper Scissors</title>
 
 </head>
 <body>
-    <div id='computerCount' class='count'> <h2>Computer Score</h2> 
+    <div id='computerCount'> <h2>Computer Score</h2> 
+        <p id="computerScoreId" class="count">0</p>
+        <p id='computerImage' class='outcome'></p>
     </div>
-    <div id='centerGrid'>
-    <div id='heading'>
-        <h1>Rock Paper Scissors</h1>
+        <div id='centerGrid'>
+            <div id='heading'>
+                <h1>Rock Paper Scissors</h1>
+            </div>
+                <div id='roundCount' ></div>
+                <div id="container">
+                    <button id='Rock'>Rock</button>
+                    <button id='Paper'>Paper</button>
+                    <button id='Scissors'>Scissors</button>
+                </div>
+                <div id='newParagraph'>
+                    <p id='par'> </p>
+                </div>
+        </div>
+    <div id='userCount' > <h2>User <br> Score</h2> 
+        <p id='userScoreId' class="count">0</p>
+        <p id='userImage' class='outcome'></p>
     </div>
-    <div id='roundCount' ></div>
-    <div id="container">
-        <button id='Rock'>Rock</button>
-        <button id='Paper'>Paper</button>
-        <button id='Scissors'>Scissors</button>
-    </div>
-    <div id='newParagraph'>
-        <p id='par'> dd</p>
-    </div>
-    </div>
-    <div id='userCount' class="count"> <h2>User <br> Score</h2> </div>
+
     <script src="script.js"></script>
 </body>
 </html>

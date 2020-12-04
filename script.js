@@ -1,16 +1,9 @@
-//defining constants
+//defining global scopes
         const buttons = document.querySelectorAll('button');
-
-        const div = document.getElementById('newParagraph');
 
         const para = document.getElementById('par');
 
-        const roundCounting = document.getElementById('roundCount')
-        roundCounting.textContent = 'Round: 0'
-
-        const compCount = document.getElementById('computerCount');
-
-        const useCount = document.getElementById('userCount');
+       const scorePara = document.getElementsByClassName('scorePara')
 
         const rocks = document.createElement('p');
         rocks.textContent = 'Rock'
@@ -24,6 +17,46 @@
         scissors.textContent = 'Scissors';
         let scissorsContent = scissors.textContent;
 
+        //this runs in the playRound() function below when user wins
+        let userSum = 0;
+        function userWin(aa) {
+            para.textContent = 'You Win This Round!';
+            const score = document.getElementById('userScoreId');
+            if (userSum >= 0) {
+                userSum+=1;
+                score.textContent = userSum;
+            }
+
+        }
+        
+        //this runs in the playRoud() function below when computer wins
+        let computerSum = 0;
+        function computerWin(bb) {
+            para.textContent = 'Computer Wins This Round!';
+            const score = document.getElementById('computerScoreId');
+            if (computerSum >= 0) {
+                computerSum+=1;
+                score.textContent = computerSum;
+            }
+
+        }
+
+        //this runs in the playRound() function below when it is a tie
+        function tie() {
+            para.textContent = 'It\'s A Tie!'
+        }
+        
+
+        const roundCounting = document.getElementById('roundCount')
+        let num = 0;
+        roundCounting.textContent = `Round: ${num}`
+       function playRound() {
+           if (num<100) {
+               num+=1;
+               roundCounting.textContent = `Round ${num}`;
+           }
+       } 
+
         let compArr = [`${rockContent}`, `${paperContent}`, `${scissorsContent}`]
 
         //randomly selects element form compArr for computer will play
@@ -32,102 +65,58 @@
             return round;
         }
 
-        function replay() {
-            const result = computerPlay()
-            let anotherResult = compArr[Math.floor(Math.random()*compArr.length)]
+        function play(user, result) {
+            let bb = result
+            playRound()
         //comparison operator?
             switch (result) {
                 case paperContent:  
-                    switch (anotherResult) {
+                    switch (user) {
                         case rockContent:
-                            console.log('who');
+                            computerWin()
                             break;
                         case scissorsContent:
-                            console.log('what');
+                            userWin()
                             break;
                         case paperContent:
-                            console.log('where');
+                            tie()
                             break;
                     }
                     break;
                 case scissorsContent:
-                    switch (anotherResult) {
+                    switch (user) {
                         case paperContent:
-                            console.log('when');
+                            computerWin()
                             break;
                         case rockContent:
-                            console.log('why');
+                            userWin()
                             break;
                         case scissorsContent:
-                            console.log('how');
+                            tie()
                             break;
                     }
                     break;
                 case rockContent: 
-                    switch(anotherResult) {
+                    switch(user) {
                         case paperContent:
-                            console.log('akak');
+                            userWin()
                             break;
                         case scissorsContent:
-                            console.log('aiaia');
+                            computerWin()
                             break;
                         case rockContent:
-                            console.log('jiji');
+                            tie()
                             break;
                     }
                     break
             } 
         }
-        replay()
-        
-        //function counts number of rounds
-        function fiveRounds() {
-            let i=0;
-            while(i<=5) {
-                if (i<=5) {
-                     return roundCounting.textContent += i;
-                } else {
-                    return rockContent
-                }
-                i++
-            }
-        }
-fiveRounds()
 
 
-
-        //plays one round of game
-        function playRound(input, computerSelection) {
-            console.log(input)
-            console.log(computerSelection)
-            if (input === 'Rock' && computerSelection === 'Paper') {
-                 output = `${computerSelection} beats ${input}!`
-                 return output
-            } else if (input === 'Rock' && computerSelection === 'Scissors') {
-                 output = `${input} beats ${computerSelection}!`
-                 return output
-            } else if (input === 'Paper' && computerSelection === 'Scissors') {
-                 output = `${computerSelection} beats ${input}!`
-                 return output
-            } else if (input === 'Paper' && computerSelection === 'Rock') {
-                 output = `${input} beats ${computerSelection}!`
-                 return output
-            } else if (input === 'Scissors' && computerSelection === 'Rock') {
-                  output =`${computerSelection} beats ${input}!`
-                  return output
-            } else if (input === 'Scissors' && computerSelection === 'Paper') {
-                  output =`${input} beats ${computerSelection}!`
-                  return output
-            } else {
-                 output = 'It\'s a tie!'
-                 return output
-            }
-        }
         buttons.forEach((button => {
             button.addEventListener('click', () => {
-                const computerSelection = computerPlay();
-                const input = button.id;
-                para.textContent = playRound(input, computerSelection)
-                div.appendChild(para);
+                const user = button.id;
+                const result = computerPlay();
+                play(user, result);
             })
         }))
