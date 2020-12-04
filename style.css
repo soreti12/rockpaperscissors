@@ -34,8 +34,9 @@ body > div:nth-child(odd) {
 }
 
 .outcome {
-    border: 1px solid black;
+    border: 1px solid rgb(226, 183, 183);
     /* remove height after styling is completed */
+    margin: 0;
     height: 10%;
     position: relative;
 }
