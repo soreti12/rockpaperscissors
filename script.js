@@ -66,7 +66,6 @@
         }
 
         function play(user, result) {
-            let bb = result
             playRound()
         //comparison operator?
             switch (result) {
